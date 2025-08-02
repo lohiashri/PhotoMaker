@@ -223,7 +223,7 @@ class PhotoMakerStableDiffusionXLPipeline(StableDiffusionXLPipeline):
         if keys != ["id_encoder", "lora_weights"]:
             raise ValueError("Required keys are (`id_encoder` and `lora_weights`) missing from the state dict.")
 
-        self.num_tokens =2
+        self.num_tokens = 2 if pm_version == 'v2' else 1
         self.pm_version = pm_version
         self.trigger_word = trigger_word
         # load finetuned CLIP image encoder and fuse module here if it has not been registered to the pipeline yet
